@@ -6,7 +6,11 @@ from dotenv import dotenv_values
 
 config = dotenv_values(".env")
 
-client = qbittorrentapi.Client(host=config.get("QBIT_URL"))
+client = qbittorrentapi.Client(
+        host=config.get("QBIT_URL"),
+        username=config.get("QBIT_USERNAME"),
+        password=config.get("QBIT_PASS")
+)
 
 qbit_appdata_path = Path(config.get("QBIT_APPDATA_PATH"))
 bt_backup_path = qbit_appdata_path / 'BT_backup'
